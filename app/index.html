@@ -17,18 +17,24 @@
   <nav class="navbar navbar-fixed-top navbar-pw">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand logo">PATHWAY GRAPH</a>
+        <div class="navbar-brand logo">PATHWAY GRAPH</div>
       </div>
     </div>
   </nav>
 
   <div class="container">
-       <div class="form-group form-json col-md-offset-2 col-md-8">
-         <label for="txt-json" style="font-size: 24px">JSON Editor</label>
-         <textarea class="form-control editor" rows="5" id="txt-json"></textarea>
-         <button type="button" class="btn btn-primary btn-json col-md-offset-5 col-md-2">Load Json</button>
-        </div>
+      <form name="form" id="form">
+        <div class="form-group form-json col-md-offset-2 col-md-8">
+          <div ng-messages="form.txt_json.$error">
+            <div class="alert alert-warning text-center" ng-message="json"> Please, provide a valid JSON. </div>
+          </div>
+          <label for="txt_json" style="font-size: 24px">JSON Editor</label>
+          <textarea class="form-control editor" rows="5" id="txt_json" name="txt_json" placeholder="Type your JSON here..." ng-model="jsont" required json-validator></textarea>
+          <button type="submit" class="btn btn-primary btn-json col-md-offset-5 col-md-2" ng-click="ctrl.loadJson(form.txt_json.$valid)">Load Json</button>
+        </div>  
+      </form>  
   </div>
+
 
   <footer class="footer">
     <div class="container">
@@ -42,6 +48,7 @@
   <script src="assets/js/bootstrap.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 
   <!-- APP imports -->
   <script src="app.module.js"></script>

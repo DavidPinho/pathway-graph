@@ -1,2 +1,2 @@
-var homeApp = angular.module('homeApp', []);
+var homeApp = angular.module('homeApp', ['ngMessages']);
 
