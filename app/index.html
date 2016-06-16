@@ -8,13 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="assets/css/pathway-graph.css">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/pathway-graph.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body ng-controller="HomeCtrl as ctrl">
 
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-fixed-top navbar-pw">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand logo">PATHWAY GRAPH</a>
@@ -23,7 +23,11 @@
   </nav>
 
   <div class="container">
-    
+       <div class="form-group form-json col-md-offset-2 col-md-8">
+         <label for="txt-json" style="font-size: 24px">JSON Editor</label>
+         <textarea class="form-control editor" rows="5" id="txt-json"></textarea>
+         <button type="button" class="btn btn-primary btn-json col-md-offset-5 col-md-2">Load Json</button>
+        </div>
   </div>
 
   <footer class="footer">
