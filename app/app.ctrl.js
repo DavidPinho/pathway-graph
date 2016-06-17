@@ -4,6 +4,7 @@ homeApp.controller('HomeCtrl', function ($scope) {
 
   $scope.json = "";
   $scope.steps = [];
+  $scope.currentStep = null;
   $scope.icons = [];
   for (var k in icons) {
     $scope.icons[k] = go.Geometry.fillPath(icons[k]);
@@ -25,11 +26,14 @@ homeApp.controller('HomeCtrl', function ($scope) {
       var step = $scope.steps[i];
       $scope.nodeData.push({
         key: step.name,
-        instruction: step.instruction,
+        description: step.description,
         question: step.question,
         answers: step.answers,
         icon: "mobile",
       });
+      if (i == 0) {
+        $scope.currentStep = $scope.nodeData[0];
+      }
       var links = step.goto;
       for (var j = 0; j < links.length; j++) {
         $scope.linkData.push({

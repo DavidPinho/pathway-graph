@@ -81,11 +81,17 @@ code {
 
 li {
   padding: 5px;
+  padding-top: 10px;
   list-style: none;
 }
 
 .question-answer {
   background-color: #E3F2E1;
   padding: 10px;
+  padding-bottom: 5px;
 }
 
+.description {
+  color: gray; 
+  font-size: 13px;
+}
