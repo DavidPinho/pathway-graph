@@ -4,18 +4,22 @@ homeApp.controller('HomeCtrl', function ($scope) {
 
   $scope.json = "";
   $scope.steps = [];
-  $scope.nodeData = [];
-  $scope.linkData = [];
-  $scope.show = false;
+  $scope.icons = [];
+  for (var k in icons) {
+    $scope.icons[k] = go.Geometry.fillPath(icons[k]);
+  }
 
-  // Load JSON
+  //Load and Validate Json
 	thisCtrl.loadJson = function(validJson) { 
 		if (validJson) {
 			thisCtrl.parseJson(JSON.parse($scope.json));
 		}
 	}
 
+  //Parse Json and load it on the chart
   thisCtrl.parseJson = function(json) {
+    $scope.nodeData = [];
+    $scope.linkData = [];
     $scope.steps = json.audit.steps;
     for (var i = 0; i < $scope.steps.length; i++) {
       var step = $scope.steps[i];
@@ -38,9 +42,10 @@ homeApp.controller('HomeCtrl', function ($scope) {
   }
 
   thisCtrl.loadChart = function() {
-    for (var k in icons) {
-      icons[k] = go.Geometry.fillPath(icons[k]);
-    }
+    if ($scope.diagram) {
+      $scope.diagram.model = new go.GraphLinksModel($scope.nodeData, $scope.linkData);
+      return;
+    }  
 
     var $ = go.GraphObject.make;
     var myDiagram =
@@ -51,13 +56,15 @@ homeApp.controller('HomeCtrl', function ($scope) {
         layout: $(go.TreeLayout, 
                   { angle: 90, layerSpacing: 35 })
       });
+    $scope.diagram = myDiagram;
+
 
     // Node template
     myDiagram.nodeTemplate =
     $(go.Node, "Vertical",
       $(go.Shape,
         { margin: 2, fill: "black", strokeWidth: 0, width: 45, height:60 },
-        new go.Binding("geometryString", "icon", function(icon) {return icons[icon]})),
+        new go.Binding("geometryString", "icon", function(icon) {return $scope.icons[icon]})),
       $(go.TextBlock, "Default Text",
         { margin: 12, stroke: "black", font: "bold 16px sans-serif" },
         new go.Binding("text", "key"))
@@ -72,11 +79,12 @@ homeApp.controller('HomeCtrl', function ($scope) {
      );
 
     myDiagram.model = new go.GraphLinksModel($scope.nodeData, $scope.linkData);
+
+    //Event to set the chart's height when start 
     myDiagram.addDiagramListener("InitialLayoutCompleted", function(e) {
       var dia = e.diagram;
       dia.div.style.height = (dia.documentBounds.height + 24) + "px";
     });
-
   }
 });
 
