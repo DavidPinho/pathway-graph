@@ -5,38 +5,38 @@
       "is_live":"true",
       "steps":[
          {
-            "name":"STEP1",
-            "description": "DOTHIS",
-            "question": "why?",
+            "name":"FIRST_STEP",
+            "description": "In the fist step do this",
+            "question": "is it the first question?",
             "answers":["yes","no"],
-	    "goto": ["STEP2","STEP3", "STEP4"]
+	    "goto": ["SECOND_STEP","THIRD_STEP", "FOURTH_STEP"]
          },
          {
-            "name":"STEP2",
-            "description": "DOTHIS2",
-            "question": "why?2",
-            "answers":["yes2","no2"],
-	    "goto": ["STEP5"]
+            "name":"SECOND_STEP",
+            "description": "You can do whatever you want",
+            "question": "what day is today?",
+            "answers":["Friday","Saturday", "Sunday"],
+	    "goto": ["FIFTH_STEP"]
          },
          {
-            "name":"STEP3",
-            "description": "DOTHIS3",
-            "question": "why?3",
-            "answers":["yes3","no3"],
+            "name":"THIRD_STEP",
+            "description": "It is a description of the step",
+            "question": "What is your favorite team?",
+            "answers":["Manchester","Chelsea", "Arsenal"],
+	    "goto": ["FIFTH_STEP"]
+         },
+         {
+            "name":"FOURTH_STEP",
+            "description": "One more description here",
+            "question": "Are you happy?",
+            "answers":["yes","of course"],
 	    "goto": []
          },
          {
-            "name":"STEP4",
-            "description": "DOTHIS4",
-            "question": "why?4",
-            "answers":["yes4","no4"],
-	    "goto": []
-         },
-         {
-            "name":"STEP5",
-            "description": "DOTHIS5",
-            "question": "why?5",
-            "answers":["yes5","no5"],
+            "name":"FIFTH_STEP",
+            "description": "The last description",
+            "question": "is it the last one?",
+            "answers":["yes","no", "maybe"],
 	    "goto": []
          } 
       ],
