@@ -1,0 +1,52 @@
+{
+   "audit":{
+      "name":"AUDIT",
+      "description":"DESCRIPTION",
+      "is_live":"true",
+      "steps":[
+         {
+            "name":"STEP1",
+            "description": "DOTHIS",
+            "question": "why?",
+            "answers":["yes","no"],
+	    "goto": ["STEP2","STEP3", "STEP4"]
+         },
+         {
+            "name":"STEP2",
+            "description": "DOTHIS2",
+            "question": "why?2",
+            "answers":["yes2","no2"],
+	    "goto": ["STEP5"]
+         },
+         {
+            "name":"STEP3",
+            "description": "DOTHIS3",
+            "question": "why?3",
+            "answers":["yes3","no3"],
+	    "goto": []
+         },
+         {
+            "name":"STEP4",
+            "description": "DOTHIS4",
+            "question": "why?4",
+            "answers":["yes4","no4"],
+	    "goto": []
+         },
+         {
+            "name":"STEP5",
+            "description": "DOTHIS5",
+            "question": "why?5",
+            "answers":["yes5","no5"],
+	    "goto": []
+         } 
+      ],
+      "tags":[
+         {
+            "name":"general"
+         },
+         {
+            "name":"housekeeping"
+         }
+      ]
+   }
+}
