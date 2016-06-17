@@ -21,7 +21,12 @@ homeApp.controller('HomeCtrl', function ($scope, $route, stepInfoService) {
   thisCtrl.parseJson = function(json) {
     $scope.nodeData = [];
     $scope.linkData = [];
-    $scope.steps = json.audit.steps;
+    loadNodeData(json.audit.steps);
+    thisCtrl.loadChart(); 
+  }
+
+  function loadNodeData(steps) {
+    $scope.steps = steps;
     for (var i = 0; i < $scope.steps.length; i++) {
       var step = $scope.steps[i];
       $scope.nodeData.push({
@@ -31,18 +36,21 @@ homeApp.controller('HomeCtrl', function ($scope, $route, stepInfoService) {
         answers: step.answers,
         icon: "mobile",
       });
-      if (i == 0) {
+      loadLinkData(step);
+    } 
+    if ($scope.nodeData.length > 0) {
         stepInfoService.setCurrentStep($scope.nodeData[0]);
-      }
-      var links = step.goto;
-      for (var j = 0; j < links.length; j++) {
-        $scope.linkData.push({
-          from: step.name,
-          to: links[j],
-        });
-      }
-    }   
-    thisCtrl.loadChart(); 
+    }
+  }
+
+  function loadLinkData(step) {
+    var links = step.goto;
+    for (var j = 0; j < links.length; j++) {
+      $scope.linkData.push({
+        from: step.name,
+        to: links[j],
+      });
+    }
   }
 
   thisCtrl.loadChart = function() {
@@ -98,6 +106,7 @@ homeApp.controller('HomeCtrl', function ($scope, $route, stepInfoService) {
 });
 
 
+//Validate JSON format
 homeApp.directive('jsonValidator', function() {
   return {
     require: 'ngModel',
