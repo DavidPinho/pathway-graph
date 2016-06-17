@@ -1,0 +1,22 @@
+<div class="box">
+  <div class="box-header">
+    <i class="fa fa-info" aria-hidden="true"></i>
+    Step Information
+  </div>
+  <div class="box-body">
+    <div style="font-size: 20px;">{{currentStep.key}}</div>
+    <div class="description">{{currentStep.description}}</div>
+    <div style="padding-top: 20px">
+      <div class="question-answer">
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i> {{currentStep.question}}
+        <div>
+          <ul>
+            <li ng-repeat="answer in currentStep.answers">
+              <input value="{{answer}}"/>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div> 

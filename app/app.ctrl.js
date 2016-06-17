@@ -1,4 +1,4 @@
-homeApp.controller('HomeCtrl', function ($scope, $route) {
+homeApp.controller('HomeCtrl', function ($scope, $route, stepInfoService) {
   // This controller instance
   var thisCtrl = this;
 
@@ -32,7 +32,7 @@ homeApp.controller('HomeCtrl', function ($scope, $route) {
         icon: "mobile",
       });
       if (i == 0) {
-        $scope.currentStep = $scope.nodeData[0];
+        stepInfoService.setCurrentStep($scope.nodeData[0]);
       }
       var links = step.goto;
       for (var j = 0; j < links.length; j++) {
@@ -87,11 +87,11 @@ homeApp.controller('HomeCtrl', function ($scope, $route) {
     //Event to set the chart's height when start 
     myDiagram.addDiagramListener("InitialLayoutCompleted", function(event) {
       var dia = event.diagram;
-      dia.div.style.height = (dia.documentBounds.height + 24) + "px";
+      dia.div.style.height = (dia.documentBounds.height + 15) + "px";
     });
 
     myDiagram.addDiagramListener("ObjectSingleClicked", function(event) {
-      $scope.currentStep = event.subject.part.data;
+      stepInfoService.setCurrentStep(event.subject.part.data);
       $route.reload();
     });
   }
