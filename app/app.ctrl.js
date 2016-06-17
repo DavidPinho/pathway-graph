@@ -1,4 +1,4 @@
-homeApp.controller('HomeCtrl', function ($scope) {
+homeApp.controller('HomeCtrl', function ($scope, $route) {
   // This controller instance
   var thisCtrl = this;
 
@@ -85,9 +85,14 @@ homeApp.controller('HomeCtrl', function ($scope) {
     myDiagram.model = new go.GraphLinksModel($scope.nodeData, $scope.linkData);
 
     //Event to set the chart's height when start 
-    myDiagram.addDiagramListener("InitialLayoutCompleted", function(e) {
-      var dia = e.diagram;
+    myDiagram.addDiagramListener("InitialLayoutCompleted", function(event) {
+      var dia = event.diagram;
       dia.div.style.height = (dia.documentBounds.height + 24) + "px";
+    });
+
+    myDiagram.addDiagramListener("ObjectSingleClicked", function(event) {
+      $scope.currentStep = event.subject.part.data;
+      $route.reload();
     });
   }
 });
