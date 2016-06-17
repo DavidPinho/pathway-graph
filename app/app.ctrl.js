@@ -55,7 +55,7 @@ homeApp.controller('HomeCtrl', function ($scope, $route) {
     var myDiagram =
     $(go.Diagram, "flow_chart",
       {
-        initialContentAlignment: go.Spot.Top,
+        initialContentAlignment: go.Spot.Center,
         "undoManager.isEnabled": true, 
         layout: $(go.TreeLayout, 
                   { angle: 90, layerSpacing: 35 })
