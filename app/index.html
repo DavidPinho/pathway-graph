@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/pathway-graph.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 </head>
 <body ng-controller="HomeCtrl as ctrl">
 
@@ -37,7 +37,28 @@
 
   <div class="container" ng-show="steps.length > 0">
       <div class="col-md-6">
-      <p>here</p>
+        <div class="box">
+          <div class="box-header">
+            <i class="fa fa-info" aria-hidden="true"></i>
+            Step Information
+          </div>
+          <div class="box-body">
+            <div style="font-size: 20px;">Step name</div>
+            <div style="color: gray"> The step description comes here</div>
+            <div style="padding-top: 20px">
+              <div class="question-answer">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i> Add a question here?
+                <div>
+                  <ul>
+                    <li><input value="Option A"/></li>
+                    <li><input value="Option B"/></li>
+                    <li><input value="Option C"/></li>
+                  </ul>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>  
     </div>
     <div class="col-md-6">
       <div id="flow_chart" style="width: 100%; height: 100%; min-width: 300px;"></div>
