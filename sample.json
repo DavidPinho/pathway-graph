@@ -13,7 +13,7 @@
          },
          {
             "name":"SECOND_STEP",
-            "description": "You can do whatever you want",
+            "description": "You can do whatever you want.",
             "question": "what day is today?",
             "answers":["Friday","Saturday", "Sunday"],
 	    "goto": ["FIFTH_STEP"]
