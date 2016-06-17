@@ -29,12 +29,20 @@
             <div class="alert alert-warning text-center" ng-message="json"> Please, provide a valid JSON. </div>
           </div>
           <label for="txt_json" style="font-size: 24px">JSON Editor</label>
-          <textarea class="form-control editor" rows="5" id="txt_json" name="txt_json" placeholder="Type your JSON here..." ng-model="jsont" required json-validator></textarea>
+          <textarea class="form-control editor" rows="5" id="txt_json" name="txt_json" placeholder="Type your JSON here..." ng-model="json" required json-validator></textarea>
           <button type="submit" class="btn btn-primary btn-json col-md-offset-5 col-md-2" ng-click="ctrl.loadJson(form.txt_json.$valid)">Load Json</button>
         </div>  
       </form>  
   </div>
 
+  <div class="container" ng-show="steps.length > 0">
+      <div class="col-md-6">
+      <p>here</p>
+    </div>
+    <div class="col-md-6">
+      <div id="flow_chart" style="width: 100%; height: 100%; min-width: 300px;"></div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -49,9 +57,12 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>
+  <script src="assets/js/icons.js"></script>
 
   <!-- APP imports -->
   <script src="app.module.js"></script>
   <script src="app.ctrl.js"></script>
+
 </body>
 </html>
